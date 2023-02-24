@@ -1,12 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
-interface Item {
-  id: number
-  name: string;
-  description: string;
-}
-
-type ItemWithoutId = Omit<Item, 'id'>;
+import { Item, ItemWithoutId } from './item';
 
 interface ItemState {
   items: Item[];
@@ -32,11 +25,11 @@ const itemSlice = createSlice({
         state.items.splice(itemIndex, 1);
       }
     },
-    arrayReseted(state) {
+    arrayReset(state) {
       state.items.splice(0, state.items.length);
     },
   },
 });
 
-export const { itemAdded, itemDeleted, arrayReseted } = itemSlice.actions;
+export const { itemAdded, itemDeleted, arrayReset } = itemSlice.actions;
 export default itemSlice.reducer;
